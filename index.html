@@ -1,388 +1,238 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta charset="utf-8">
   <title>Peter McCamley — Theatre Practitioner</title>
-  <meta name="description" content="Peter McCamley — actor, director, producer, arts educator. Reels, selected highlights, gallery and contact." />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <style>
     :root{
-      --bg:#07080b;
-      --panel: rgba(255,255,255,.06);
-      --panel2: rgba(255,255,255,.04);
-      --line: rgba(255,255,255,.10);
-      --text: rgba(255,255,255,.92);
-      --muted: rgba(255,255,255,.62);
-      --muted2: rgba(255,255,255,.48);
-      --accent: #a5b4fc;
-      --accent2:#5eead4;
-      --max: 1050px;
-      --r: 18px;
-      --shadow: 0 22px 60px rgba(0,0,0,.55);
+      --bg:#06070a;
+      --panel:rgba(255,255,255,.06);
+      --line:rgba(255,255,255,.12);
+      --text:rgba(255,255,255,.95);
+      --muted:rgba(255,255,255,.65);
+      --max:1080px;
+      --r:18px;
     }
+
     *{box-sizing:border-box}
-    html{scroll-behavior:smooth}
     body{
       margin:0;
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.55;
-      overflow-x:hidden;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      background:var(--bg);
+      color:var(--text);
+      line-height:1.55;
     }
-    a{color:inherit; text-decoration:none}
-    a:hover{opacity:.92; text-decoration:underline}
-    .wrap{max-width:var(--max); margin:0 auto; padding:0 18px 80px}
 
-    /* Background hero image */
+    /* Background hero */
     .bg{
       position:fixed; inset:0;
       background:
-        radial-gradient(1200px 600px at 15% 0%, rgba(165,180,252,.20), transparent 55%),
-        radial-gradient(900px 600px at 90% 10%, rgba(94,234,212,.14), transparent 60%),
-        linear-gradient(180deg, rgba(0,0,0,.45), rgba(0,0,0,.80)),
+        linear-gradient(180deg, rgba(0,0,0,.45), rgba(0,0,0,.9)),
         url("hero-bg.jpg");
-      background-size: cover;
-      background-position: center 20%; /* adjust this number if you want more/less of the top */
-      filter: saturate(1.05) contrast(1.05);
-      transform: scale(1.03);
-      z-index:-2;
-    }
-    .bg::after{
-      content:"";
-      position:absolute; inset:0;
-      background: linear-gradient(180deg, rgba(7,8,11,.28) 0%, rgba(7,8,11,.82) 55%, rgba(7,8,11,.95) 100%);
-      backdrop-filter: blur(2px);
+      background-size:cover;
+      background-position:center 20%;
+      z-index:-1;
     }
 
     header{
-      position:sticky; top:0; z-index:50;
-      backdrop-filter: blur(12px);
-      background: rgba(7,8,11,.55);
+      position:sticky; top:0;
+      backdrop-filter:blur(10px);
+      background:rgba(6,7,10,.6);
       border-bottom:1px solid var(--line);
     }
-    .nav{
+
+    nav{
       max-width:var(--max);
       margin:0 auto;
-      padding: 14px 18px;
-      display:flex; align-items:center; justify-content:space-between;
-      gap:12px;
-    }
-    .brand{display:flex; flex-direction:column; gap:2px}
-    .brand strong{font-size:14px; letter-spacing:.2px}
-    .brand span{font-size:12px; color:var(--muted)}
-    .links{
-      display:flex; gap:12px; flex-wrap:wrap; justify-content:flex-end;
-      font-size:12px; color:var(--muted);
-    }
-    .links a{
-      padding:7px 10px;
-      border-radius:999px;
-      border:1px solid transparent;
-    }
-    .links a:hover{
-      text-decoration:none;
-      border-color: var(--line);
-      background: rgba(255,255,255,.04);
-      color: var(--text);
+      padding:14px 20px;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
     }
 
-    .hero{
-      padding: 34px 0 10px;
-      display:grid;
-      grid-template-columns: 1.2fr .8fr;
-      gap:16px;
-      align-items:stretch;
+    nav strong{font-size:14px}
+    nav span{font-size:12px; color:var(--muted)}
+    nav a{
+      color:var(--muted);
+      text-decoration:none;
+      margin-left:12px;
+      font-size:12px;
     }
-    @media (max-width: 900px){
-      .hero{grid-template-columns:1fr; padding-top:22px}
+    nav a:hover{color:var(--text)}
+
+    main{
+      max-width:var(--max);
+      margin:0 auto;
+      padding:36px 20px 80px;
     }
+
+    h1{font-size:40px; margin:0 0 12px}
+    h2{font-size:20px; margin:0 0 12px}
+    p{margin:0}
 
     .card{
-      background: linear-gradient(180deg, rgba(255,255,255,.07), rgba(255,255,255,.04));
-      border: 1px solid var(--line);
-      border-radius: var(--r);
-      padding: 18px;
-      box-shadow: var(--shadow);
-    }
-    .card.soft{box-shadow:none; background: rgba(255,255,255,.04)}
-    h1{
-      margin:0 0 8px;
-      font-size: 38px;
-      letter-spacing: -0.8px;
-      line-height: 1.05;
-    }
-    .lead{
-      margin:0 0 14px;
-      color: var(--muted);
-      font-size: 14px;
-      max-width: 62ch;
-    }
-    .actions{display:flex; flex-wrap:wrap; gap:10px; margin-top:14px}
-    .btn{
-      display:inline-flex; align-items:center; justify-content:center;
-      gap:10px;
-      padding:10px 12px;
-      border-radius: 14px;
+      background:var(--panel);
       border:1px solid var(--line);
-      background: rgba(255,255,255,.04);
+      border-radius:var(--r);
+      padding:20px;
+      margin-bottom:18px;
+    }
+
+    /* Intro */
+    .intro{
+      display:grid;
+      grid-template-columns:1.2fr .8fr;
+      gap:18px;
+    }
+    @media(max-width:900px){
+      .intro{grid-template-columns:1fr}
+    }
+
+    .portrait{
+      width:120px;
+      height:150px;
+      border-radius:16px;
+      object-fit:cover;
+      border:1px solid var(--line);
+    }
+
+    /* Projects */
+    .projects{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:16px;
+    }
+    @media(max-width:900px){
+      .projects{grid-template-columns:1fr}
+    }
+
+    .project{
+      border:1px solid var(--line);
+      border-radius:var(--r);
+      overflow:hidden;
+      background:rgba(255,255,255,.04);
+    }
+
+    .project img{
+      width:100%;
+      height:220px;
+      object-fit:cover;
+    }
+
+    .project div{
+      padding:14px 16px;
+    }
+
+    .project b{display:block}
+    .project span{font-size:12px; color:var(--muted)}
+
+    /* Reels */
+    iframe, audio{width:100%}
+
+    .video{
+      position:relative;
+      padding-top:56.25%;
+      border-radius:16px;
+      overflow:hidden;
+      border:1px solid var(--line);
+    }
+    .video iframe{
+      position:absolute;
+      inset:0;
+      width:100%;
+      height:100%;
+    }
+
+    /* Links */
+    .links a{
+      display:block;
+      padding:10px 12px;
+      border:1px solid var(--line);
+      border-radius:14px;
+      margin-bottom:8px;
+      text-decoration:none;
+      color:var(--text);
       font-size:13px;
     }
-    .btn.primary{
-      border-color: rgba(165,180,252,.45);
-      background: rgba(165,180,252,.10);
-    }
-    .btn:hover{ text-decoration:none; opacity:.95 }
-
-    .portraitRow{display:flex; gap:14px; align-items:center}
-    .portrait{
-      width: 112px; height: 140px;
-      border-radius: 18px;
-      object-fit: cover;
-      border:1px solid var(--line);
-      background: rgba(255,255,255,.03);
-    }
-    .mini{margin:0; color: var(--muted2); font-size:12px}
-
-    section{margin-top: 16px}
-    .sectionTitle{
-      display:flex; align-items:center; gap:10px;
-      margin: 0 0 10px;
-      font-size: 14px;
-      letter-spacing: .25px;
-      color: var(--text);
-    }
-    .rule{height:1px; flex:1; background: var(--line)}
-
-    .grid2{display:grid; grid-template-columns: 1fr 1fr; gap:14px}
-    @media (max-width: 900px){ .grid2{grid-template-columns:1fr;} }
-
-    .tile{
-      border:1px solid var(--line);
-      border-radius: var(--r);
-      background: rgba(255,255,255,.03);
-      padding: 16px;
-    }
-    .tile h3{margin:0 0 6px; font-size: 16px; letter-spacing: -.2px}
-    .tile p{margin:0; color: var(--muted); font-size: 13px}
-    .list{margin:10px 0 0; padding:0; list-style:none; display:grid; gap:8px}
-    .li{
-      padding:10px 12px;
-      border-radius: 14px;
-      border:1px solid var(--line);
-      background: rgba(255,255,255,.03);
-      display:flex; gap:10px; align-items:flex-start; justify-content:space-between;
-    }
-    .li b{font-size:13px}
-    .li span{color: var(--muted); font-size:12px; text-align:right}
-
-    video, audio{width:100%}
-    .note{
-      margin-top:10px;
-      padding:10px 12px;
-      border:1px solid var(--line);
-      border-radius: 14px;
-      color: var(--muted);
-      background: rgba(255,255,255,.03);
-      font-size: 12px;
-    }
-
-    /* Gallery */
-    .gallery{
-      display:grid;
-      grid-template-columns: repeat(12, 1fr);
-      gap:10px;
-    }
-    .g{
-      border-radius: 18px;
-      overflow:hidden;
-      border:1px solid var(--line);
-      background: rgba(255,255,255,.03);
-      cursor:pointer;
-      transition: transform .15s ease, opacity .15s ease;
-    }
-    .g:hover{transform: translateY(-2px); opacity:.95}
-    .g img{width:100%; height:100%; object-fit:cover; display:block}
-    .g1{grid-column: span 7; height: 280px}
-    .g2{grid-column: span 5; height: 280px}
-    .g3{grid-column: span 4; height: 210px}
-    .g4{grid-column: span 4; height: 210px}
-    .g5{grid-column: span 4; height: 210px}
-    @media (max-width: 900px){
-      .g1,.g2,.g3,.g4,.g5{grid-column: span 12; height: 240px}
-    }
-
-    /* Modal */
-    .modal{
-      position:fixed; inset:0; z-index:80;
-      display:none;
-      align-items:center; justify-content:center;
-      background: rgba(0,0,0,.72);
-      padding: 18px;
-    }
-    .modal.open{display:flex}
-    .modalInner{
-      max-width: 1100px;
-      width:100%;
-      border-radius: 22px;
-      overflow:hidden;
-      border: 1px solid var(--line);
-      background: rgba(10,12,16,.92);
-      box-shadow: 0 26px 80px rgba(0,0,0,.65);
-    }
-    .modalBar{
-      display:flex; justify-content:space-between; align-items:center;
-      padding: 12px 14px;
-      border-bottom: 1px solid var(--line);
-      color: var(--muted);
-      font-size: 12px;
-    }
-    .x{
-      border:1px solid var(--line);
-      background: rgba(255,255,255,.04);
-      color: var(--text);
-      border-radius: 12px;
-      padding: 8px 10px;
-      cursor:pointer;
-    }
-    .modalImg{
-      width:100%;
-      max-height: 78vh;
-      object-fit: contain;
-      background: rgba(0,0,0,.2);
-      display:block;
-    }
+    .links a:hover{background:rgba(255,255,255,.06)}
 
     footer{
-      margin-top: 18px;
-      color: var(--muted2);
-      font-size: 12px;
-      display:flex; flex-wrap:wrap; gap:10px; justify-content:space-between;
-      padding-top: 14px;
+      margin-top:30px;
+      font-size:12px;
+      color:var(--muted);
+      display:flex;
+      justify-content:space-between;
+      flex-wrap:wrap;
     }
   </style>
 </head>
 
 <body>
-  <div class="bg" aria-hidden="true"></div>
+  <div class="bg"></div>
 
   <header>
-    <div class="nav">
-      <div class="brand">
-        <strong>Peter McCamley</strong>
-        <span>Actor • Director • Producer • Arts Educator</span>
+    <nav>
+      <div>
+        <strong>Peter McCamley</strong><br>
+        <span>Actor · Director · Producer · Arts Educator</span>
       </div>
-      <div class="links" aria-label="Site navigation">
+      <div>
         <a href="#acting">Acting</a>
         <a href="#directing">Directing</a>
         <a href="#producing">Producing</a>
-        <a href="#educator">Arts Educator</a>
-        <a href="#gallery">Gallery</a>
+        <a href="#educator">Educator</a>
         <a href="#links">Links</a>
         <a href="#contact">Contact</a>
       </div>
-    </div>
+    </nav>
   </header>
 
-  <main class="wrap">
-    <!-- HERO -->
-    <div class="hero">
-      <div class="card">
+  <main>
+    <!-- Intro -->
+    <section class="card intro">
+      <div>
         <h1>Peter McCamley</h1>
-        <p class="lead">
-          Theatre practitioner based in Wexford, working across acting, directing, producing, and arts education.
-          I’m drawn to character-led storytelling, strong ensemble work, and making ambitious projects happen.
+        <p>
+          Theatre practitioner based in Wexford, working across acting, directing,
+          producing, and arts education. I’m drawn to character-led storytelling,
+          strong ensembles, and ambitious projects rooted in place and community.
         </p>
-
-        <div class="actions">
-          <a class="btn primary" href="#acting">Watch reels</a>
-          <a class="btn" href="Peter McCamley Acting CV 2025 STAGE  (1).pdf" target="_blank" rel="noopener">Acting CV (PDF)</a>
-          <a class="btn" href="Peter McCamley CV.pdf" target="_blank" rel="noopener">Director/Producer CV (PDF)</a>
-        </div>
-
-        <div class="note">
-          Spotlight: 4613-7831-2134 • Equity: M00201661
+      </div>
+      <div style="display:flex; gap:14px; align-items:center;">
+        <img src="headshot.jpg" alt="Peter McCamley headshot" class="portrait">
+        <div style="font-size:13px; color:var(--muted)">
+          Spotlight: 4613-7831-2134<br>
+          Equity: M00201661<br><br>
+          <a href="mailto:petemccamley@gmail.com" style="color:var(--text)">petemccamley@gmail.com</a>
         </div>
       </div>
-
-      <div class="card soft">
-        <div class="portraitRow">
-          <img class="portrait" src="headshot.jpg" alt="Peter McCamley headshot" />
-          <div>
-            <p style="margin:0 0 6px; font-size:14px; letter-spacing:-.2px;">
-              Available for acting, directing, producing collaborations, workshops, and voice work.
-            </p>
-            <p class="mini" style="margin:0;">
-              Email: <a href="mailto:petemccamley@gmail.com">petemccamley@gmail.com</a>
-            </p>
-            <p class="mini" style="margin:10px 0 0;">
-              Based: Wexford, Ireland
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
+    </section>
 
     <!-- ACTING -->
     <section class="card" id="acting">
-      <div class="sectionTitle">Acting <span class="rule"></span></div>
+      <h2>Acting</h2>
 
-      <div class="grid2">
-        <div class="tile">
-          <h3>Reels</h3>
+      <div class="video">
+        <iframe src="https://www.youtube.com/embed/N-MvHEK_2aM"
+          frameborder="0" allowfullscreen></iframe>
+      </div>
 
-          <!-- YouTube embed (working format) -->
-          <div style="position:relative; padding-top:56.25%; border-radius:18px; overflow:hidden; border:1px solid rgba(255,255,255,.10);">
-            <iframe
-              src="https://www.youtube.com/embed/N-MvHEK_2aM"
-              style="position:absolute; inset:0; width:100%; height:100%;"
-              frameborder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowfullscreen>
-            </iframe>
-          </div>
-
-          <div class="note">
-            Voice reels:
-            <div style="margin-top:10px">
-              <div style="color:var(--muted2); font-size:12px; margin-bottom:6px;">Narrative</div>
-              <audio controls preload="metadata">
-                <source src="NARRATIVE REEL 1 (1).mp3" type="audio/mpeg" />
-              </audio>
-            </div>
-            <div style="margin-top:10px">
-              <div style="color:var(--muted2); font-size:12px; margin-bottom:6px;">Commercial</div>
-              <audio controls preload="metadata">
-                <source src="COMMERCIAL REEL 1 (1).mp3" type="audio/mpeg" />
-              </audio>
-            </div>
+      <div class="projects" style="margin-top:16px;">
+        <div class="project">
+          <img src="acting-clean-sweep.jpg" alt="Clean Sweep RTÉ">
+          <div>
+            <b>Clean Sweep (RTÉ)</b>
+            <span>DI Yeats — Television</span>
           </div>
         </div>
 
-        <div class="tile">
-          <h3>Selected screen highlights</h3>
-          <p>Two recent media credits.</p>
-
-          <ul class="list">
-            <li class="li">
-              <div>
-                <b>Clean Sweep (RTÉ)</b><br/>
-                <span style="color:var(--muted)">DI Yeats</span>
-              </div>
-              <span>TV</span>
-            </li>
-            <li class="li">
-              <div>
-                <b>Sequah</b><br/>
-                <span style="color:var(--muted)">Short film</span>
-              </div>
-              <span>Film</span>
-            </li>
-          </ul>
-
-          <div class="note">
-            Full credits and training are on the PDFs above. :contentReference[oaicite:2]{index=2}
+        <div class="project">
+          <img src="acting-sequah.jpg" alt="Sequah film">
+          <div>
+            <b>Sequah</b>
+            <span>Short film</span>
           </div>
         </div>
       </div>
@@ -390,221 +240,95 @@
 
     <!-- DIRECTING -->
     <section class="card" id="directing">
-      <div class="sectionTitle">Directing <span class="rule"></span></div>
+      <h2>Directing</h2>
 
-      <div class="tile">
-        <h3>Recent / current</h3>
-        <ul class="list">
-          <li class="li">
-            <div>
-              <b>Urban Legends</b><br/>
-              <span style="color:var(--muted)">Colm Tóibín — Opera (Wexford Festival Opera, 2025)</span>
-            </div>
-            <span>Director</span>
-          </li>
-          <li class="li">
-            <div>
-              <b>Of Mornington</b><br/>
-              <span style="color:var(--muted)">Billy Roche — currently in rehearsal</span>
-            </div>
-            <span>Director</span>
-          </li>
-        </ul>
+      <div class="projects">
+        <div class="project">
+          <img src="directing-urban-legends.jpg" alt="Urban Legends WFO">
+          <div>
+            <b>Urban Legends</b>
+            <span>Colm Tóibín — Opera, Wexford Festival Opera 2025</span>
+          </div>
+        </div>
+
+        <div class="project">
+          <img src="directing-of-mornington.jpg" alt="Of Mornington rehearsal">
+          <div>
+            <b>Of Mornington</b>
+            <span>Billy Roche — currently in rehearsal</span>
+          </div>
+        </div>
       </div>
     </section>
 
     <!-- PRODUCING -->
     <section class="card" id="producing">
-      <div class="sectionTitle">Producing <span class="rule"></span></div>
+      <h2>Producing</h2>
 
-      <div class="grid2">
-  <div class="tile">
-    <h3>Castle Lake Arts Festival</h3>
-    <p>
-      Co-founder and producer of a site-specific arts festival combining theatre,
-      music, and community participation.
-    </p>
-    <ul class="list">
-      <li class="li">
-        <div>
-          <b>Castle Lake Arts Festival</b><br/>
-          <span style="color:var(--muted)">Wexford</span>
+      <div class="projects">
+        <div class="project">
+          <img src="producing-castle-lake.jpg" alt="Castle Lake Arts Festival">
+          <div>
+            <b>Castle Lake Arts Festival</b>
+            <span>Producer / Co-founder</span>
+          </div>
         </div>
-        <span>Producer</span>
-      </li>
-    </ul>
-  </div>
 
-  <div class="tile">
-    <h3>Filling the Well — Rosslare</h3>
-    <p>
-      Producer of a community-focused cultural initiative supporting artists,
-      audiences, and creative wellbeing in Rosslare.
-    </p>
-    <ul class="list">
-      <li class="li">
-        <div>
-          <b>Filling the Well</b><br/>
-          <span style="color:var(--muted)">Rosslare</span>
+        <div class="project">
+          <img src="producing-filling-the-well.jpg" alt="Filling the Well Rosslare">
+          <div>
+            <b>Filling the Well — Rosslare</b>
+            <span>Producer — community cultural project</span>
+          </div>
         </div>
-        <span>Producer</span>
-      </li>
-    </ul>
-  </div>
-</div>
-</section>
-
-    <!-- ARTS EDUCATOR -->
-    <section class="card" id="educator">
-      <div class="sectionTitle">Arts Educator <span class="rule"></span></div>
-
-      <div class="tile">
-        <h3>Corish Wallace Performing Arts School</h3>
-        <p>
-          Teaching and coaching performance skills with a practical, stage-ready approach
-          (acting, voice, confidence, ensemble, audition craft).
-        </p>
       </div>
     </section>
 
-    <!-- GALLERY -->
-    <section class="card" id="gallery">
-      <div class="sectionTitle">Gallery <span class="rule"></span></div>
+    <!-- EDUCATOR -->
+    <section class="card" id="educator">
+      <h2>Arts Educator</h2>
 
-      <p style="margin:0 0 12px; color:var(--muted); font-size:13px;">
-        Upload images as: <span style="color:var(--muted2)">gallery-1.jpg … gallery-5.jpg</span>
-      </p>
-
-      <div class="gallery">
-        <div class="g g1" data-full="gallery-1.jpg"><img src="gallery-1.jpg" alt="Gallery image 1" loading="lazy"></div>
-        <div class="g g2" data-full="gallery-2.jpg"><img src="gallery-2.jpg" alt="Gallery image 2" loading="lazy"></div>
-        <div class="g g3" data-full="gallery-3.jpg"><img src="gallery-3.jpg" alt="Gallery image 3" loading="lazy"></div>
-        <div class="g g4" data-full="gallery-4.jpg"><img src="gallery-4.jpg" alt="Gallery image 4" loading="lazy"></div>
-        <div class="g g5" data-full="gallery-5.jpg"><img src="gallery-5.jpg" alt="Gallery image 5" loading="lazy"></div>
+      <div class="projects">
+        <div class="project">
+          <img src="educator-corish-wallace.jpg" alt="Corish Wallace Performing Arts School">
+          <div>
+            <b>Corish Wallace Performing Arts School</b>
+            <span>Acting, voice, ensemble, audition craft</span>
+          </div>
+        </div>
       </div>
     </section>
 
     <!-- LINKS -->
     <section class="card" id="links">
-      <div class="sectionTitle">Links <span class="rule"></span></div>
-
-      <div class="grid2">
-        <div class="tile">
-          <h3>Social</h3>
-          <ul class="list">
-            <li class="li">
-              <div><b>Instagram</b><br/><span style="color:var(--muted)">Add your profile link</span></div>
-              <span><a href="https://instagram.com/" target="_blank" rel="noopener">Open</a></span>
-            </li>
-            <li class="li">
-              <div><b>Facebook</b><br/><span style="color:var(--muted)">Add your page link</span></div>
-              <span><a href="https://facebook.com/" target="_blank" rel="noopener">Open</a></span>
-            </li>
-            <li class="li">
-              <div><b>LinkedIn</b><br/><span style="color:var(--muted)">Add your profile link</span></div>
-              <span><a href="https://linkedin.com/" target="_blank" rel="noopener">Open</a></span>
-            </li>
-          </ul>
-        </div>
-
-        <div class="tile">
-          <h3>Work</h3>
-          <ul class="list">
-            <li class="li">
-              <div><b>Ad Personam</b><br/><span style="color:var(--muted)">Website</span></div>
-              <span><a href="https://adpersonam.ie" target="_blank" rel="noopener">Open</a></span>
-            </li>
-            <!-- Optional extras:
-            <li class="li">
-              <div><b>Spotlight</b><br/><span style="color:var(--muted)">Profile</span></div>
-              <span><a href="YOUR_SPOTLIGHT_LINK" target="_blank" rel="noopener">Open</a></span>
-            </li>
-            -->
-          </ul>
-          <div class="note">
-            Replace the social links with your real URLs.
-          </div>
-        </div>
+      <h2>Links</h2>
+      <div class="links">
+        <a href="https://adpersonam.ie" target="_blank">Ad Personam Cultural Events</a>
+        <a href="https://instagram.com/" target="_blank">Instagram</a>
+        <a href="https://facebook.com/" target="_blank">Facebook</a>
+        <a href="https://linkedin.com/" target="_blank">LinkedIn</a>
       </div>
     </section>
 
     <!-- CONTACT -->
     <section class="card" id="contact">
-      <div class="sectionTitle">Contact <span class="rule"></span></div>
-
-      <div class="grid2">
-        <div class="tile">
-          <h3>Get in touch</h3>
-          <p>For bookings, collaborations, workshops, voice work, or producing partnerships.</p>
-          <div class="actions" style="margin-top:12px">
-            <a class="btn primary" href="mailto:petemccamley@gmail.com">petemccamley@gmail.com</a>
-            <a class="btn" href="#acting">Reels</a>
-            <a class="btn" href="#links">Links</a>
-          </div>
-        </div>
-
-        <div class="tile">
-          <h3>Details</h3>
-          <ul class="list">
-            <li class="li">
-              <div><b>Based</b><br/><span style="color:var(--muted)">Wexford, Ireland</span></div>
-              <span></span>
-            </li>
-            <li class="li">
-              <div><b>Spotlight</b><br/><span style="color:var(--muted)">4613-7831-2134</span></div>
-              <span></span>
-            </li>
-            <li class="li">
-              <div><b>Equity</b><br/><span style="color:var(--muted)">M00201661</span></div>
-              <span></span>
-            </li>
-          </ul>
-        </div>
-      </div>
+      <h2>Contact</h2>
+      <p>
+        For bookings, collaborations, workshops, or producing enquiries:<br><br>
+        <a href="mailto:petemccamley@gmail.com" style="color:var(--text)">
+          petemccamley@gmail.com
+        </a>
+      </p>
     </section>
 
     <footer>
       <span>© <span id="y"></span> Peter McCamley</span>
-      <span style="color:var(--muted2)">Single-page portfolio</span>
+      <span>Single-page portfolio</span>
     </footer>
   </main>
 
-  <!-- Gallery modal -->
-  <div class="modal" id="modal" aria-hidden="true">
-    <div class="modalInner">
-      <div class="modalBar">
-        <span>Gallery</span>
-        <button class="x" id="closeBtn" aria-label="Close">Close</button>
-      </div>
-      <img class="modalImg" id="modalImg" alt="Gallery full view" />
-    </div>
-  </div>
-
   <script>
     document.getElementById("y").textContent = new Date().getFullYear();
-
-    const modal = document.getElementById("modal");
-    const modalImg = document.getElementById("modalImg");
-    const closeBtn = document.getElementById("closeBtn");
-
-    function openModal(src){
-      modalImg.src = src;
-      modal.classList.add("open");
-      modal.setAttribute("aria-hidden", "false");
-    }
-    function closeModal(){
-      modal.classList.remove("open");
-      modal.setAttribute("aria-hidden", "true");
-      modalImg.src = "";
-    }
-
-    document.querySelectorAll(".g").forEach(el => {
-      el.addEventListener("click", () => openModal(el.dataset.full));
-    });
-
-    closeBtn.addEventListener("click", closeModal);
-    modal.addEventListener("click", (e) => { if(e.target === modal) closeModal(); });
-    document.addEventListener("keydown", (e) => { if(e.key === "Escape") closeModal(); });
   </script>
 </body>
 </html>

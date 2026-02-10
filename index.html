@@ -479,13 +479,16 @@
           <h3>Showreel</h3>
 
           <!-- Upload MP4 (H.264) as: showreel.mp4 -->
-          <video controls preload="metadata" playsinline>
-            <source src="showreel.mp4" type="video/mp4" />
-            <p style="color: var(--muted); font-size:12px;">
-              If the video doesn’t play, your browser may not support the format.
-              <a href="showreel.mp4">Download the showreel</a>.
-            </p>
-          </video>
+          <div style="position:relative; padding-top:56.25%; border-radius:18px; overflow:hidden; border:1px solid rgba(255,255,255,.10);">
+  <iframe
+    src="https://www.youtube.com/embed/https://www.youtube.com/watch?v=N-MvHEK_2aM"
+    style="position:absolute; inset:0; width:100%; height:100%;"
+    frameborder="0"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+    allowfullscreen>
+  </iframe>
+</div>
+
 
           <div class="note">
             GitHub Pages often won’t play <b>.mov</b> reliably — export your reel as <b>MP4 (H.264)</b> and name it <b>showreel.mp4</b>.
@@ -632,3 +635,4 @@
   </script>
 </body>
 </html>
+
